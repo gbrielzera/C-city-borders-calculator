@@ -1,28 +1,32 @@
-#include <stdio.h>   // Inclui a biblioteca padrão de entrada e saída.
-#include <stdlib.h>  // Inclui a biblioteca padrão de funções gerais.
-#include "cidades.h" // Inclui o arquivo de cabeçalho que contém as definições das estruturas e funções relacionadas a cidades.
+#include "cidades.h" // Inclui o cabeçalho onde estão definidas as estruturas e funções utilizadas
+#include <stdio.h>   // Inclui a biblioteca padrão de entrada e saída
+#include <stdlib.h>  // Inclui a biblioteca padrão de alocação de memória e outras funções utilitárias
 
-int main() // Função principal do programa.
+int main()
 {
-    const char *cidades = "cidades.txt"; // Define o nome do arquivo que contém as informações das cidades.
+    const char *nomeArquivo = "nomeArquivo.txt"; // Nome do arquivo que contém os dados das cidades
 
-    // Chama a função 'calcularMenorVizinhanca' para encontrar a menor vizinhança entre todas as cidades.
-    double menorVizinhanca = calcularMenorVizinhanca(cidades);
-    // Chama a função 'cidadeMenorVizinhanca' para obter o nome da cidade com a menor vizinhança.
-    char *cidade = cidadeMenorVizinhanca(cidades);
+    // Chama a função que calcula a menor vizinhança e armazena o resultado
+    double menorVizinhanca = calcularMenorVizinhanca(nomeArquivo);
 
-    // Se a função 'cidadeMenorVizinhanca' retornou um nome de cidade válido (não NULL),
-    // imprime o nome da cidade e o valor da menor vizinhança.
-    if (cidade)
+    // Chama a função que encontra o nome da cidade com a menor vizinhança e armazena o resultado
+    char *cidadeMenor = cidadeMenorVizinhanca(nomeArquivo);
+
+    // Verifica se foi possível encontrar a cidade com a menor vizinhança
+    if (cidadeMenor)
     {
-        printf("Cidade com menor vizinhanca: %s\n", cidade); // Imprime o nome da cidade.
-        printf("Menor vizinhanca: %.2f\n", menorVizinhanca); // Imprime o valor da menor vizinhança com duas casas decimais.
-        free(cidade);                                        // Libera a memória alocada para o nome da cidade.
+        // Imprime a menor vizinhança e o nome da cidade com a menor vizinhança
+        printf("Menor vizinhanca de estrada: %.2f\n", menorVizinhanca);
+        printf("Cidade com menor vizinhanca: %s\n", cidadeMenor);
+        // Libera a memória alocada para o nome da cidade
+        free(cidadeMenor);
     }
-    else // Se não foi possível calcular a menor vizinhança, imprime uma mensagem de erro.
+    else
     {
-        printf("Erro ao calcular a menor vizinhanca.\n");
+        // Caso ocorra um erro, imprime uma mensagem de erro
+        printf("Erro ao calcular a menor vizinhanca ou ao encontrar a cidade.\n");
     }
 
-    return 0; // Retorna 0 indicando que o programa foi concluído com sucesso.
+    // Retorna 0 para indicar que o programa terminou com sucesso
+    return 0;
 }
