@@ -17,8 +17,8 @@ typedef struct
 } Estrada;
 
 // Declaração de funções que serão implementadas em outro arquivo.
-Estrada *getEstrada(const char *cidades);            // Função para inicializar as cidades no TAD 'Estrada'.
-double calcularMenorVizinhanca(const char *cidades); // Função para calcular e retornar a menor vizinhança entre todas as cidades.
-char *cidadeMenorVizinhanca(const char *cidades);    // Função para retornar o nome da cidade com a menor vizinhança.
+Estrada *getEstrada(const char *nomeArquivo);            // Função para inicializar as cidades no TAD 'Estrada'.
+double calcularMenorVizinhanca(const char *nomeArquivo); // Função para calcular e retornar a menor vizinhança entre todas as cidades.
+char *cidadeMenorVizinhanca(const char *nomeArquivo);    // Função para retornar o nome da cidade com a menor vizinhança.
 
 #endif // Fim da verificação de inclusão múltipla.
